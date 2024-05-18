@@ -22,9 +22,8 @@ class MyClient(botpy.Client):
         _log.info(f"robot 「{self.robot.name}」 on_ready!")
 
     async def on_direct_message_create(self, message: DirectMessage):
-        # import ipdb; ipdb.set_trace()
-        # reply = f"机器人{self.robot.name}收到你的私信了: {message.content}"
-        reply = qa_bot.reply(message.content)
+        reply = qa_bot.reply(message.author.id,message.content)
+        # _log.info(f"「{message.author.username}」: {message.author.id}")
         _log.info(f"「{message.author.username}」: {message.content} --->「{self.robot.name}」: {reply}")
         await self.api.post_dms(
             guild_id=message.guild_id,
