@@ -1,3 +1,14 @@
 ollama==0.2.0
 qq_botpy==1.2.1
 func_timeout==4.3.5
+
+# custom selection of integrations to work with core
+# llama-index-core
+# llama-index-llms-openai
+# llama-index-llms-replicate
+# llama-index-embeddings-huggingface
+
+# qwen-agent
+# qwen-agent
+
+

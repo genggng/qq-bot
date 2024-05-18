@@ -1,6 +1,9 @@
-*.log
+*.log*
 /botpy-master
 /robot-master
 config.yaml
 __pycache__/
 *.ipynb
+*.conf
+*.pdf
+/workspace

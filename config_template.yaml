@@ -1,2 +1,5 @@
 appid: "12121212"
 secret: "xxxxxxxx"
+chat_host: "http://localhost:9999"  
+model_name: "llama2-chinese"  # 选择模型，需要在ollama服务器上运行
+wait_time: 60  # 如果超过60秒没有收到ollama响应，就放弃此次请求

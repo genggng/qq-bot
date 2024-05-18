@@ -21,10 +21,11 @@ key_api = {
 }
 
 cmd_list = [
-    "清空记忆",
-    "系统信息",
-    "猫的记忆",
-    "杀掉vscode",
+    "#清空记忆",
+    "#系统信息",
+    "#猫的记忆",
+    "#杀掉vscode",
+    # "#切换模型",
 ]
 
 
@@ -88,24 +89,28 @@ class QA_bot(object):
             return f"小猫目前有这些指令：{cmds}"
         elif "帮助" in message:
             return "输入「技能」查看小猫的技能，输入「指令」查看小猫的指令。"
-        elif "清空记忆" in message:
+        elif "#清空记忆" in message:
             self.clear_memory(user_id)
             return "小猫已经忘记了和你的对话。"
-        elif "系统信息" in message:
+        elif "#系统信息" in message:
             info = get_system_info()
             return f"CPU使用率：{info['cpu_usage']}%，内存使用率：{info['memory_usage']}%"
-        elif "猫的记忆" in message:
+        elif "#猫的记忆" in message:
             reply = " "
             for msg in self.memory_dict[user_id]:
                 reply +=  f"{msg['role']}:{msg['content']}\n"
             reply += f"上下文总长度：{str(self.memory_len_dict[user_id])}"
             return reply
-        elif "杀掉vscode" in message:
+        elif "#杀掉vscode" in message:
             ret_code = kill_vscode_server()
             if ret_code != 0:
                 return "杀掉vscode-server进程失败。"
             else:
                 return "杀掉vscode-server进程成功。"
+        # elif "#切换模型" in message:
+        #     _,model_name = message.split(":")
+        #     self.model_name = "gpt2"
+        #     return "切换模型成功。"
         else:
             q_msg = {
                 'role': 'user',
